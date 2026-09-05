@@ -1,0 +1,14 @@
+D:\ThuGian_CSharp\hoc_csharp\bai2\bin\Debug\net9.0\bai2.exe
+D:\ThuGian_CSharp\hoc_csharp\bai2\bin\Debug\net9.0\bai2.deps.json
+D:\ThuGian_CSharp\hoc_csharp\bai2\bin\Debug\net9.0\bai2.runtimeconfig.json
+D:\ThuGian_CSharp\hoc_csharp\bai2\bin\Debug\net9.0\bai2.dll
+D:\ThuGian_CSharp\hoc_csharp\bai2\bin\Debug\net9.0\bai2.pdb
+D:\ThuGian_CSharp\hoc_csharp\bai2\obj\Debug\net9.0\bai2.GeneratedMSBuildEditorConfig.editorconfig
+D:\ThuGian_CSharp\hoc_csharp\bai2\obj\Debug\net9.0\bai2.AssemblyInfoInputs.cache
+D:\ThuGian_CSharp\hoc_csharp\bai2\obj\Debug\net9.0\bai2.AssemblyInfo.cs
+D:\ThuGian_CSharp\hoc_csharp\bai2\obj\Debug\net9.0\bai2.csproj.CoreCompileInputs.cache
+D:\ThuGian_CSharp\hoc_csharp\bai2\obj\Debug\net9.0\bai2.dll
+D:\ThuGian_CSharp\hoc_csharp\bai2\obj\Debug\net9.0\refint\bai2.dll
+D:\ThuGian_CSharp\hoc_csharp\bai2\obj\Debug\net9.0\bai2.pdb
+D:\ThuGian_CSharp\hoc_csharp\bai2\obj\Debug\net9.0\bai2.genruntimeconfig.cache
+D:\ThuGian_CSharp\hoc_csharp\bai2\obj\Debug\net9.0\ref\bai2.dll
