@@ -12,3 +12,8 @@ D:\ThuGian_CSharp\hoc_csharp\bai2\obj\Debug\net9.0\refint\bai2.dll
 D:\ThuGian_CSharp\hoc_csharp\bai2\obj\Debug\net9.0\bai2.pdb
 D:\ThuGian_CSharp\hoc_csharp\bai2\obj\Debug\net9.0\bai2.genruntimeconfig.cache
 D:\ThuGian_CSharp\hoc_csharp\bai2\obj\Debug\net9.0\ref\bai2.dll
+D:\ThuGian_CSharp\hoc_csharp\bai2\obj\debug\testbuild\bai2.exe
+D:\ThuGian_CSharp\hoc_csharp\bai2\obj\debug\testbuild\bai2.deps.json
+D:\ThuGian_CSharp\hoc_csharp\bai2\obj\debug\testbuild\bai2.runtimeconfig.json
+D:\ThuGian_CSharp\hoc_csharp\bai2\obj\debug\testbuild\bai2.dll
+D:\ThuGian_CSharp\hoc_csharp\bai2\obj\debug\testbuild\bai2.pdb

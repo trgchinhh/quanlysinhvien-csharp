@@ -1,25 +1,20 @@
-public class SinhVien : ConNguoi {
-    private string mssv = "";
-    public SinhVien() : base() {
-        mssv = "00000";
+public class SinhVien {
+    public int? stt = null;
+    public string? hoten = null;
+    public string? mssv = null;
+    public float? diemgpa = null;
+    public string? hocluc = null;
+
+    public SinhVien(string hoten, string mssv, float diemgpa){
+        this.hoten = hoten;
+        this.mssv = mssv;
+        this.diemgpa = diemgpa;
+        this.hocluc = this.tinh_hocluc();
     }
 
-    public SinhVien(string hoten, string cccd, string mssv)
-    : base(hoten, cccd){
-        dat_mssv = mssv;
-    }
-
-    public string dat_mssv{
-        get { return mssv; }
-        set {
-            if(string.IsNullOrWhiteSpace(value))
-                Console.WriteLine("MSSV không được để trống !");
-            else mssv = value;
-        }
-    }
-
-    public void inthongtinsv(){
-        base.inthongtin();
-        Console.WriteLine("MSSV: " + mssv + "\n");
+    public string tinh_hocluc(){
+        if(diemgpa >= 8.0) return "Gioi";
+        else if(diemgpa <= 8.0 && diemgpa >= 6.5) return "Khá";
+        else return "Trung bình";
     }
 }
