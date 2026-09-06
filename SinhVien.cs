@@ -5,6 +5,13 @@ public class SinhVien {
     public float? diemgpa = null;
     public string? hocluc = null;
 
+    public SinhVien(){
+        hoten = "Không có";
+        mssv = "Không có";
+        diemgpa = -1f;
+        hocluc = "Không có";
+    }
+
     public SinhVien(string hoten, string mssv, float diemgpa){
         this.hoten = hoten;
         this.mssv = mssv;

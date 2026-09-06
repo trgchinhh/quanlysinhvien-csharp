@@ -1,3 +1,4 @@
+using System.Text;
 
 public class Program {
     public static void dungchuongtrinh(){
@@ -6,12 +7,13 @@ public class Program {
     }
 
     public static void Main(){
+        Console.OutputEncoding = Encoding.UTF8;
         QuanLySinhVien quanlysinhvien = new QuanLySinhVien();
 
         // tạo db sẵn 
         quanlysinhvien.themsinhvien(new SinhVien("Chinh", "001", 9.5f));
-        quanlysinhvien.themsinhvien(new SinhVien("Phuc", "002", 8.5f));
-        quanlysinhvien.themsinhvien(new SinhVien("Bao", "003", 8.0f));
+        quanlysinhvien.themsinhvien(new SinhVien("Phúc", "002", 8.5f));
+        quanlysinhvien.themsinhvien(new SinhVien("Bảo", "003", 8.0f));
         // in lần đầu cho đánh stt
         quanlysinhvien.inthongtinsinhvien();
 
