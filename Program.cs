@@ -17,7 +17,7 @@ public class Program {
         Console.ReadKey();
     }
 
-    public static void loading_database(QuanLySinhVien quanlysinhvien){
+    public static void taodulieusinhvien(QuanLySinhVien quanlysinhvien){
         // tạo db sẵn nếu chưa có file hoặc file ko có data
         if(System.IO.File.Exists("danhsach.txt")){
             quanlysinhvien.docfilevaobandau();
@@ -31,13 +31,13 @@ public class Program {
     public static void Main(){
         Console.OutputEncoding = Encoding.UTF8;
         QuanLySinhVien quanlysinhvien = new QuanLySinhVien();
-        loading_database(quanlysinhvien);
+        taodulieusinhvien(quanlysinhvien);
 
         // in lần đầu cho đánh stt
         quanlysinhvien.inthongtinsinhvien();
 
         while(true){
-            loading_database(quanlysinhvien);
+            taodulieusinhvien(quanlysinhvien);
             Console.Clear();
             banner();
             quanlysinhvien.hienthithucdon();
