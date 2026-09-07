@@ -9,6 +9,11 @@ public class QuanLySinhVien {
         }
     }
 
+    private int laystttieptheo(){
+        if(danhsachsinhvien.Count == 0) return 1;
+        return danhsachsinhvien.Max(sv => sv.stt ?? 0) + 1;
+    }
+
     public bool kiemtrathongtin(SinhVien sinhvien){
         if(string.IsNullOrWhiteSpace(sinhvien.hoten)
         || string.IsNullOrWhiteSpace(sinhvien.mssv)
@@ -36,8 +41,9 @@ public class QuanLySinhVien {
             return;
         }
         if(kiemtrathongtin(sinhvienmoi)){
+            sinhvienmoi.stt = laystttieptheo();
             danhsachsinhvien.Add(sinhvienmoi);
-            Console.WriteLine("Đã thêm sinh viên {0}", sinhvienmoi.hoten);
+            Console.WriteLine("Đã thêm sinh viên {0} với STT {1}", sinhvienmoi.hoten, sinhvienmoi.stt);
         }
         else {
             Console.WriteLine("Thêm sinh viên không thành công do thông tin nhập lỗi !");
