@@ -161,10 +161,10 @@ public class QuanLySinhVien {
         }
         Console.WriteLine(
             "THỐNG KÊ\n" + 
-            "Lớp có:\n" + 
+            "Lớp có: {6} sinh viên\n" + 
             "{0} học sinh giỏi - tỷ lệ: {3}%\n{1} học sinh khá - tỷ lệ: {4}%\n{2} học sinh trung bình - tỷ lệ: {5}%",
             so_hsg, so_hsk, so_hstb,
-            tyle_hsg, tyle_hsk, tyle_hstb
+            tyle_hsg, tyle_hsk, tyle_hstb, soluongsinhvien
         );
     }
 
