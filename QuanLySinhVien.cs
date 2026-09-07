@@ -1,7 +1,9 @@
 using System.Globalization;
+using System.Text;
 
 public class QuanLySinhVien {
     public List<SinhVien> danhsachsinhvien = new List<SinhVien>();
+    private const string tenfile = "danhsach.txt";
 
     private void tinhstttieptheo(){
         for(int i = 0; i < danhsachsinhvien.Count; i++){
@@ -43,6 +45,7 @@ public class QuanLySinhVien {
         if(kiemtrathongtin(sinhvienmoi)){
             sinhvienmoi.stt = laystttieptheo();
             danhsachsinhvien.Add(sinhvienmoi);
+            luufile();
             Console.WriteLine("Đã thêm sinh viên {0} với STT {1}", sinhvienmoi.hoten, sinhvienmoi.stt);
         }
         else {
@@ -77,6 +80,7 @@ public class QuanLySinhVien {
             }
         }
         Console.WriteLine("Đã cập nhật thông tin sinh viên!");
+        luufile();
     }
 
     public void xoasinhvien(int stt){
@@ -84,6 +88,7 @@ public class QuanLySinhVien {
         var timthaysinhvien = danhsachsinhvien.Find(sv => sv.stt == stt);
         if(timthaysinhvien != null){
             danhsachsinhvien.RemoveAt(stt - 1);
+            luufile();
             Console.WriteLine("Đã xóa sinh viên {0}", timthaysinhvien.hoten);
         }else {
             Console.WriteLine("Không tìm thấy sinh viên !");
@@ -128,6 +133,7 @@ public class QuanLySinhVien {
             break;
         }
         if(hiendanhsach){
+            luufile();
             this.inthongtinsinhvien();
         }
     }
@@ -179,6 +185,35 @@ public class QuanLySinhVien {
                 sinhvien.diemgpa?.ToString("N2"),
                 sinhvien.hocluc
             );
+        }
+    }
+
+    public void luufile(){
+        using(StreamWriter writer = new StreamWriter(tenfile, false, Encoding.UTF8)){
+            foreach(var sv in danhsachsinhvien){
+                writer.WriteLine("{0}-{1}-{2}-{3}",
+                    sv.hoten, sv.mssv, sv.diemgpa, sv.hocluc);
+            }
+        }
+    }
+
+    public void docfilevaobandau(){
+        danhsachsinhvien.Clear();
+        if(File.Exists(tenfile)){
+            string[] dong = File.ReadAllLines(tenfile, Encoding.UTF8);
+            foreach(var line in dong){
+                if(string.IsNullOrWhiteSpace(line)) continue;
+                string[] parts = line.Split('-');
+                if(parts.Length != 4) continue;
+                string hoten = parts[0].Trim();
+                string mssv = parts[1].Trim();
+                float? diemgpa = parsesothuc(parts[2].Trim());
+                if(diemgpa.HasValue){
+                    SinhVien sv = new SinhVien(hoten, mssv, diemgpa.Value);
+                    sv.stt = laystttieptheo();
+                    danhsachsinhvien.Add(sv);
+                }
+            }
         }
     }
 

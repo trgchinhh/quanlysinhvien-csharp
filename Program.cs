@@ -17,18 +17,27 @@ public class Program {
         Console.ReadKey();
     }
 
+    public static void loading_database(QuanLySinhVien quanlysinhvien){
+        // tạo db sẵn nếu chưa có file hoặc file ko có data
+        if(System.IO.File.Exists("danhsach.txt")){
+            quanlysinhvien.docfilevaobandau();
+        } else {
+            quanlysinhvien.themsinhvien(new SinhVien("Chinh", "001", 9.5f));
+            quanlysinhvien.themsinhvien(new SinhVien("Phúc", "002", 8.5f));
+            quanlysinhvien.themsinhvien(new SinhVien("Bảo", "003", 8.0f));
+        }
+    }
+
     public static void Main(){
         Console.OutputEncoding = Encoding.UTF8;
         QuanLySinhVien quanlysinhvien = new QuanLySinhVien();
+        loading_database(quanlysinhvien);
 
-        // tạo db sẵn 
-        quanlysinhvien.themsinhvien(new SinhVien("Chinh", "001", 9.5f));
-        quanlysinhvien.themsinhvien(new SinhVien("Phúc", "002", 8.5f));
-        quanlysinhvien.themsinhvien(new SinhVien("Bảo", "003", 8.0f));
         // in lần đầu cho đánh stt
         quanlysinhvien.inthongtinsinhvien();
 
         while(true){
+            loading_database(quanlysinhvien);
             Console.Clear();
             banner();
             quanlysinhvien.hienthithucdon();
