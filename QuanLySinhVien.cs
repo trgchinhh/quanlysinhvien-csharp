@@ -1,3 +1,5 @@
+using System.Globalization;
+
 public class QuanLySinhVien {
     public List<SinhVien> danhsachsinhvien = new List<SinhVien>();
 
@@ -11,20 +13,34 @@ public class QuanLySinhVien {
         if(string.IsNullOrWhiteSpace(sinhvien.hoten)
         || string.IsNullOrWhiteSpace(sinhvien.mssv)
         || !sinhvien.diemgpa.HasValue
+        || sinhvien.diemgpa < 0 || sinhvien.diemgpa > 10
         || string.IsNullOrWhiteSpace(sinhvien.hocluc)){
             return false;
         }
         return true;
     }
 
+    private static float? parsesothuc(string? input){
+        if(string.IsNullOrWhiteSpace(input)) return null;
+        string chuanhoa = input.Trim().Replace(',', '.');
+        if(float.TryParse(chuanhoa, NumberStyles.Float, CultureInfo.InvariantCulture, out float ketqua)){
+            return ketqua;
+        }
+        return null;
+    }
+
     // tạo các hàm thêm, xóa, sửa, sắp xếp, thống kê, in 
-    public void themsinhvien(SinhVien sinhvienmoi){
+    public void themsinhvien(SinhVien? sinhvienmoi){
+        if(sinhvienmoi == null){
+            Console.WriteLine("Thêm sinh viên không thành công do thông tin nhập lỗi !");
+            return;
+        }
         if(kiemtrathongtin(sinhvienmoi)){
             danhsachsinhvien.Add(sinhvienmoi);
             Console.WriteLine("Đã thêm sinh viên {0}", sinhvienmoi.hoten);
         }
         else {
-            Console.WriteLine("Thêm sinh viên {0}", sinhvienmoi, " không thành công do thông tin nhập lỗi");
+            Console.WriteLine("Thêm sinh viên không thành công do thông tin nhập lỗi !");
         }
     }
 
@@ -43,16 +59,15 @@ public class QuanLySinhVien {
         Console.Write("MSSV mới [{0}]: ", timthaysinhvien.mssv);
         string mssv = Console.ReadLine()!;
         if(!string.IsNullOrWhiteSpace(mssv)) timthaysinhvien.mssv = mssv;
-        Console.WriteLine("Vui lòng nhập điểm có dấu',' thay cho dấu '.'");
         Console.Write("Điểm GPA mới [{0}]: ", timthaysinhvien.diemgpa);
-        string gpa = Console.ReadLine()!;
-        if(!string.IsNullOrWhiteSpace(gpa)){
-            if(float.TryParse(gpa, out float diem)){
-                timthaysinhvien.diemgpa = diem;
+        float? diemmoi = parsesothuc(Console.ReadLine());
+        if(diemmoi.HasValue){
+            if(diemmoi >= 0 && diemmoi <= 10){
+                timthaysinhvien.diemgpa = diemmoi;
                 timthaysinhvien.hocluc = timthaysinhvien.tinh_hocluc();
                 Console.WriteLine("Đã tự cập nhật học lực thành: {0}", timthaysinhvien.hocluc);
             } else {
-                Console.WriteLine("Điểm nhập không hợp lệ, giữ nguyên giá trị cũ");
+                Console.WriteLine("Điểm nhập không hợp lệ (phải từ 0 đến 10), giữ nguyên giá trị cũ");
             }
         }
         Console.WriteLine("Đã cập nhật thông tin sinh viên!");
@@ -81,7 +96,10 @@ public class QuanLySinhVien {
                 "5. Quay lại"
             );
             Console.Write("Nhập lựa chọn của ban: ");
-            int luachon = int.Parse(Console.ReadLine()!);
+            if(!int.TryParse(Console.ReadLine(), out int luachon)){
+                Console.WriteLine("Vui lòng chọn hợp lệ !");
+                continue;
+            }
             if(luachon == 1){
                 danhsachsinhvien.Sort((a, b) => string.Compare(a.hoten, b.hoten));
                 Console.WriteLine("Đã sắp xếp theo tên (A -> Z)");
@@ -169,15 +187,23 @@ public class QuanLySinhVien {
         Console.WriteLine("[00] Thoát");
     }
 
-    public SinhVien nhapthongtinsinhvien(){
+    public SinhVien? nhapthongtinsinhvien(){
         Console.WriteLine("THÊM THÔNG TIN SINH VIÊN");
         Console.Write("Nhập họ tên: ");
         string hoten = Console.ReadLine()!;
         Console.Write("Nhập mssv: ");
         string mssv = Console.ReadLine()!;
         Console.Write("Nhập điểm gpa: ");
-        float diemgpa = float.Parse(Console.ReadLine()!);
-        SinhVien sinhvienmoitao = new SinhVien(hoten, mssv, diemgpa);
+        float? diemgpa = parsesothuc(Console.ReadLine());
+        if(!diemgpa.HasValue){
+            Console.WriteLine("Điểm GPA không hợp lệ, không thể tạo sinh viên !");
+            return null;
+        }
+        SinhVien sinhvienmoitao = new SinhVien(hoten, mssv, diemgpa.Value);
+        if(!kiemtrathongtin(sinhvienmoitao)){
+            Console.WriteLine("Không tạo SV mới thành công do thông tin không hợp lệ !");
+            return null;
+        }
         return sinhvienmoitao;
     }
 }

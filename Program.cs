@@ -1,6 +1,17 @@
 using System.Text;
 
 public class Program {
+    public static void banner(){
+        Console.WriteLine(@"
+  ____  _    _         _   _   _  __     __   _____ _____ _   _ _    _  __      _______ ______ _   _ 
+ / __ \| |  | |  /\   | \ | | | | \ \   / /  / ____|_   _| \ | | |  | | \ \    / /_   _|  ____| \ | |
+| |  | | |  | | /  \  |  \| | | |  \ \_/ /  | (___   | | |  \| | |__| |  \ \  / /  | | | |__  |  \| |
+| |  | | |  | |/ /\ \ | . ` | | |   \   /    \___ \  | | | . ` |  __  |   \ \/ /   | | |  __| | . ` |
+| |__| | |__| / ____ \| |\  | | |____| |     ____) |_| |_| |\  | |  | |    \  /   _| |_| |____| |\  |
+ \___\_\\____/_/    \_\_| \_| |______|_|    |_____/|_____|_| \_|_|  |_|     \/   |_____|______|_| \_|                                                                                            
+        ");
+    }
+
     public static void dungchuongtrinh(){
         Console.Write("\nNhấn enter để tiếp tục...");
         Console.ReadKey();
@@ -19,6 +30,7 @@ public class Program {
 
         while(true){
             Console.Clear();
+            banner();
             quanlysinhvien.hienthithucdon();
             Console.Write("[?] Lựa chọn: ");
             if(!int.TryParse(Console.ReadLine(), out int luachon)){
