@@ -20,7 +20,7 @@ public class SinhVien {
     }
 
     public string tinh_hocluc(){
-        if(diemgpa >= 8.0) return "Gioi";
+        if(diemgpa >= 8.0) return "Giỏi";
         else if(diemgpa <= 8.0 && diemgpa >= 6.5) return "Khá";
         else return "Trung bình";
     }

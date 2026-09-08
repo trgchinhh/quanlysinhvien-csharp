@@ -28,24 +28,65 @@ public class Program {
         }
     }
 
+    public static int dichuyenmenu(int vitri, string tieude, string[] menu){
+        ConsoleKey phim;
+        do {
+            Console.Clear();
+            banner();
+            Console.WriteLine("GỢI Ý");
+            Console.WriteLine("(Dùng phím ↑/↓ để di chuyển, Enter để chọn)\n");
+            Console.WriteLine(tieude);
+            for(int i = 0; i < menu.Length; i++){
+                if(i == vitri){
+                    Console.WriteLine("> " + menu[i]);
+                } else {
+                    Console.WriteLine("  " + menu[i]);
+                }
+            }
+            phim = Console.ReadKey(true).Key;
+            if(phim == ConsoleKey.UpArrow){
+                vitri = (vitri - 1 + menu.Length) % menu.Length;
+            } else if(phim == ConsoleKey.DownArrow){
+                vitri = (vitri + 1) % menu.Length;
+            }
+        } while(phim != ConsoleKey.Enter);
+        Console.WriteLine();
+        return vitri;
+    }
+
     public static void Main(){
         Console.OutputEncoding = Encoding.UTF8;
+        Console.CursorVisible = false; // tắt trỏ chuột
         QuanLySinhVien quanlysinhvien = new QuanLySinhVien();
         taodulieusinhvien(quanlysinhvien);
 
         // in lần đầu cho đánh stt
         quanlysinhvien.inthongtinsinhvien();
+        int vitri = 0;
 
         while(true){
             taodulieusinhvien(quanlysinhvien);
+            // Console.Clear();
+            // banner();
+            //quanlysinhvien.hienthimenu();
+            // Console.Write("[?] Lựa chọn: ");
+            // if(!int.TryParse(Console.ReadLine(), out int luachon)){
+            //     Console.WriteLine("Lựa chọn không hợp lệ, vui lòng nhập số");
+            //     continue;
+            // }
+            string[] mucmenu = {
+                "[01] In danh sách sinh viên",
+                "[02] Thêm sinh viên",
+                "[03] Sửa thông tin sinh viên",
+                "[04] Xóa sinh viên",
+                "[05] Sắp xếp sinh viên",
+                "[06] Thống kê sinh viên",
+                "[00] Thoát"
+            };
+            vitri = dichuyenmenu(vitri, "MENU", mucmenu);
+            int luachon = vitri + 1;
+            if(luachon == 7) luachon = 0;
             Console.Clear();
-            banner();
-            quanlysinhvien.hienthithucdon();
-            Console.Write("[?] Lựa chọn: ");
-            if(!int.TryParse(Console.ReadLine(), out int luachon)){
-                Console.WriteLine("Lựa chọn không hợp lệ, vui lòng nhập số");
-                continue;
-            }
 
             Console.WriteLine("");
             if(luachon == 0){
@@ -79,9 +120,10 @@ public class Program {
                 quanlysinhvien.thongkesinhvien();
             }
             else {
-                Console.WriteLine("Lựa chọn không hợp lệ");
+                Console.WriteLine("[!] Lựa chọn không hợp lệ");
             }
             dungchuongtrinh();
         }
+        Console.CursorVisible = true;
     }
 }
