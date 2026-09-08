@@ -38,7 +38,7 @@ public class Program {
             Console.WriteLine(tieude);
             for(int i = 0; i < menu.Length; i++){
                 if(i == vitri){
-                    Console.WriteLine("> " + menu[i]);
+                    Console.WriteLine("● " + menu[i]);
                 } else {
                     Console.WriteLine("  " + menu[i]);
                 }
