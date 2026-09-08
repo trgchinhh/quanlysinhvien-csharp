@@ -38,9 +38,9 @@ public class Program {
             Console.WriteLine(tieude);
             for(int i = 0; i < menu.Length; i++){
                 if(i == vitri){
-                    Console.WriteLine("● " + menu[i]);
+                    Console.WriteLine(">> " + menu[i]);
                 } else {
-                    Console.WriteLine("  " + menu[i]);
+                    Console.WriteLine("   " + menu[i]);
                 }
             }
             phim = Console.ReadKey(true).Key;
@@ -75,13 +75,13 @@ public class Program {
             //     continue;
             // }
             string[] mucmenu = {
-                "[01] In danh sách sinh viên",
-                "[02] Thêm sinh viên",
-                "[03] Sửa thông tin sinh viên",
-                "[04] Xóa sinh viên",
-                "[05] Sắp xếp sinh viên",
-                "[06] Thống kê sinh viên",
-                "[00] Thoát"
+                "In danh sách sinh viên",
+                "Thêm sinh viên",
+                "Sửa thông tin sinh viên",
+                "Xóa sinh viên",
+                "Sắp xếp sinh viên",
+                "Thống kê sinh viên",
+                "Thoát"
             };
             vitri = dichuyenmenu(vitri, "MENU", mucmenu);
             int luachon = vitri + 1;
