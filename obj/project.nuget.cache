@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "2ctAGFCSQqY=",
+  "success": true,
+  "projectFilePath": "D:\\STU\\Năm 3\\Lập trình hướng đối tượng (LT)\\Quản lý sinh viên cơ bản\\Quản lý sinh viên cơ bản.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ADMIN\\.nuget\\packages\\spectre.console\\0.57.2\\spectre.console.0.57.2.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\spectre.console.ansi\\0.57.2\\spectre.console.ansi.0.57.2.nupkg.sha512"
+  ],
+  "logs": []
+}
