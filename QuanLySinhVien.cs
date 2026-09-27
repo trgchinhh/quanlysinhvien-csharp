@@ -47,13 +47,13 @@ public class QuanLySinhVien {
         } 
         else {
             this.danhsachsinhvien = new List<SinhVien> {
-                new SinhVien {TenSinhVien = "Trường Chinh", MaSoSinhVien = "DH52400001", DiemSinhVien = 7.6f},
-                new SinhVien {TenSinhVien = "Nguyễn Gia Bảo", MaSoSinhVien = "DH52400002", DiemSinhVien = 7.6f},
+                new SinhVien {TenSinhVien = "Nguyễn Trường Chinh", MaSoSinhVien = "DH52400001", DiemSinhVien = 7.6f},
+                new SinhVien {TenSinhVien = "Trần Minh Gia Bảo", MaSoSinhVien = "DH52400002", DiemSinhVien = 7.6f},
                 new SinhVien {TenSinhVien = "Trần Minh Anh", MaSoSinhVien = "DH52400003", DiemSinhVien = 7.1f},
                 new SinhVien {TenSinhVien = "Lê Hoàng Nam", MaSoSinhVien = "DH52400004", DiemSinhVien = 8.3f},
                 new SinhVien {TenSinhVien = "Phạm Thanh Tùng", MaSoSinhVien = "DH52400005", DiemSinhVien = 9.1f},
                 new SinhVien {TenSinhVien = "Hoàng Ngọc Hân", MaSoSinhVien = "DH52400006", DiemSinhVien = 6.2f},
-                new SinhVien {TenSinhVien = "Vũ Tuấn Kiệt", MaSoSinhVien = "DH52400007", DiemSinhVien = 6.7f},
+                new SinhVien {TenSinhVien = "Vũ Võ Tuấn Kiệt", MaSoSinhVien = "DH52400007", DiemSinhVien = 6.7f},
                 new SinhVien {TenSinhVien = "Đặng Phương Thảo", MaSoSinhVien = "DH52400008", DiemSinhVien = 3.5f},
                 new SinhVien {TenSinhVien = "Bùi Đức Anh", MaSoSinhVien = "DH52400009", DiemSinhVien = 3.0f},
                 new SinhVien {TenSinhVien = "Đỗ Khánh Linh", MaSoSinhVien = "DH52400010", DiemSinhVien = 5.8f},

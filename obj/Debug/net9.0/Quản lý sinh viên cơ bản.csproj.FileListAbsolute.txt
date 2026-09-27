@@ -16,3 +16,4 @@ D:\STU\Năm 3\Lập trình hướng đối tượng (LT)\Quản lý sinh viên c
 D:\STU\Năm 3\Lập trình hướng đối tượng (LT)\Quản lý sinh viên cơ bản\obj\Debug\net9.0\Quản lý sinh viên cơ bản.pdb
 D:\STU\Năm 3\Lập trình hướng đối tượng (LT)\Quản lý sinh viên cơ bản\obj\Debug\net9.0\Quản lý sinh viên cơ bản.genruntimeconfig.cache
 D:\STU\Năm 3\Lập trình hướng đối tượng (LT)\Quản lý sinh viên cơ bản\obj\Debug\net9.0\ref\Quản lý sinh viên cơ bản.dll
+D:\STU\Năm 3\Lập trình hướng đối tượng (LT)\Quản lý sinh viên cơ bản\obj\Debug\net9.0\Quản lý sinh viên cơ bản.sourcelink.json

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Quản lý sinh viên cơ bản")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d199352259e4e967a13b313e8c896c768712dc7")]
 [assembly: System.Reflection.AssemblyProductAttribute("Quản lý sinh viên cơ bản")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Quản lý sinh viên cơ bản")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
