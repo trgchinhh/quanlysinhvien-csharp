@@ -44,7 +44,7 @@ public class Program {
                 new SelectionPrompt<int>()
                 .AddChoices(1, 2, 3, 4, 5, 6, 7)
                 .WrapAround(true)
-                .HighlightStyle(new Style(Mau.mauxanhla))
+                .HighlightStyle(new Style(Mau.mautrang))
                 .DefaultValue(luachontruoc)
                 .UseConverter(x => x switch {
                     1 => Markup.Escape("[01] Xem danh sách"),

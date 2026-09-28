@@ -7,6 +7,7 @@ public class Mau {
     public static Color maucam = Color.Orange1;
     public static Color mauxanhduong = Color.Aquamarine1;
     public static Color maucyan = Color.Cyan;
+    public static Color mautrang = Color.Default;
 
     public static void tomau(string noidung, Color mau, bool xuongdong = false){
         Console.ForegroundColor = mau;

@@ -199,10 +199,15 @@ public class QuanLySinhVien {
                 "0. Quay lại"
             );
             Console.Write("Lựa chọn: ");
-            if(!int.TryParse(Console.ReadLine()!, out int luachon)){
+            string? nhap = Console.ReadLine();
+            if(string.IsNullOrEmpty(nhap)){
+                return;
+            }
+            if(!int.TryParse(nhap, out int luachon)){
                 Console.WriteLine("Vui lòng chọn hợp lệ !");
                 continue;
             }
+
             Console.WriteLine();
             if(luachon == 1){
                 this.danhsachsinhvien.Sort((a, b)
