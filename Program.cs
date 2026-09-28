@@ -5,22 +5,18 @@
 using Spectre.Console;
 
 public class Program {
-    public static void dungchuongtrinh(){
-        Console.Write("\nNhấn phím bất kỳ để tiếp tục ...");
-        Console.ReadKey();
-    }
-
-    public static void Main(){
-        QuanLySinhVien quanlysinhvien = new QuanLySinhVien();
-        quanlysinhvien.napdulieudanhsach();
-        
-        string noidungbanner = @"┌──────────────────────────────┐
+    public static string noidungbanner = @"┌──────────────────────────────┐
 │     QUẢN LÝ SINH VIÊN C#     │
 │ Tác giả: Trường Chinh        │
 │ Github: Github.com/trgchinhh │
 └──────────────────────────────┘
         ";
+    public static void dungchuongtrinh(){
+        Console.Write("\nNhấn phím bất kỳ để tiếp tục ...");
+        Console.ReadKey();
+    }
 
+    public static Color chonmau(){
         Console.Clear();
         Console.WriteLine(noidungbanner);
 
@@ -32,9 +28,36 @@ public class Program {
             )
             .Header("Hướng dẫn")
         );
-        dungchuongtrinh();
 
-        int luachontruoc = 1;
+        Console.WriteLine("\nChọn màu menu");
+        var luachonmau = AnsiConsole.Prompt(
+            new SelectionPrompt<int>()
+            .AddChoices(1, 2, 3, 4, 5, 6, 7, 8)
+            .WrapAround(true)
+            .HighlightStyle(new Style(Mau.danhsachmau[6]))
+            .UseConverter(x => x switch {
+                1 => Markup.Escape("[01] Màu đỏ"),
+                2 => Markup.Escape("[02] Màu xanh lá"),
+                3 => Markup.Escape("[03] Màu vàng"),
+                4 => Markup.Escape("[04] Màu cam"),
+                5 => Markup.Escape("[05] Màu xanh ngọc"),
+                6 => Markup.Escape("[06] Màu xanh cyan"),
+                7 => Markup.Escape("[07] Màu mặc định"),
+                8 => Markup.Escape("[08] Thoát"),
+                _ => ""
+            })
+        );
+        if(luachonmau == 8) Environment.Exit(0);
+        return Mau.danhsachmau[luachonmau - 1];
+    }
+
+    public static void Main(){
+        QuanLySinhVien quanlysinhvien = new QuanLySinhVien();
+        quanlysinhvien.napdulieudanhsach();
+        
+        var luachonmau = chonmau();
+
+        int luachontruoc = 0;
         while(true){
             Console.Clear();
             Console.WriteLine(noidungbanner);
@@ -42,11 +65,12 @@ public class Program {
             Console.WriteLine("  MENU");
             var luachon = AnsiConsole.Prompt(
                 new SelectionPrompt<int>()
-                .AddChoices(1, 2, 3, 4, 5, 6, 7)
+                .AddChoices(0, 1, 2, 3, 4, 5, 6, 7)
                 .WrapAround(true)
-                .HighlightStyle(new Style(Mau.mautrang))
+                .HighlightStyle(new Style(luachonmau))
                 .DefaultValue(luachontruoc)
                 .UseConverter(x => x switch {
+                    0 => Markup.Escape("[00] Thay màu"),
                     1 => Markup.Escape("[01] Xem danh sách"),
                     2 => Markup.Escape("[02] Thêm sinh viên"),
                     3 => Markup.Escape("[03] Sửa thông tin"),
@@ -59,7 +83,11 @@ public class Program {
             );
             luachontruoc = luachon;
             Console.WriteLine();
-            if(luachon == 1){
+            if(luachon == 0){
+                luachonmau = chonmau();
+                continue;
+            }
+            else if(luachon == 1){
                 quanlysinhvien.XuatDanhSach();
             }
             else if(luachon == 2){
