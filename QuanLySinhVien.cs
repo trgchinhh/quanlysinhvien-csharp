@@ -1,14 +1,13 @@
 using System;
 using System.Text;
-using System.Linq;
-using System.Text.Json;
+
 
 public class QuanLySinhVien {
     // Frield 
     
     private int soluongsinhvien;
     private List<SinhVien> danhsachsinhvien = new List<SinhVien>();
-    private string duongdandanhsach = "data/danhsachsinhvien.json";
+    private string duongdandanhsach = "data/danhsachsinhvien.txt";
     
     // Constructor
 
@@ -36,52 +35,75 @@ public class QuanLySinhVien {
     // Methods
 
     public void napdulieudanhsach(){
-        if(!Directory.Exists("data")){
-            Console.WriteLine("Chưa có thư mục data. Tạo thư mục data/");
-            Directory.CreateDirectory("data");
-        }
-        // demo database 
-        if(File.Exists(this.duongdandanhsach)){
-            string dulieudanhsach = File.ReadAllText(this.duongdandanhsach);
-            this.danhsachsinhvien = JsonSerializer.Deserialize<List<SinhVien>>(dulieudanhsach);
-        } 
-        else {
-            this.danhsachsinhvien = new List<SinhVien> {
-                new SinhVien {TenSinhVien = "Nguyễn Trường Chinh", MaSoSinhVien = "DH52400001", DiemSinhVien = 7.6f},
-                new SinhVien {TenSinhVien = "Trần Minh Gia Bảo", MaSoSinhVien = "DH52400002", DiemSinhVien = 7.6f},
-                new SinhVien {TenSinhVien = "Trần Minh Anh", MaSoSinhVien = "DH52400003", DiemSinhVien = 7.1f},
-                new SinhVien {TenSinhVien = "Lê Hoàng Nam", MaSoSinhVien = "DH52400004", DiemSinhVien = 8.3f},
-                new SinhVien {TenSinhVien = "Phạm Thanh Tùng", MaSoSinhVien = "DH52400005", DiemSinhVien = 9.1f},
-                new SinhVien {TenSinhVien = "Hoàng Ngọc Hân", MaSoSinhVien = "DH52400006", DiemSinhVien = 6.2f},
-                new SinhVien {TenSinhVien = "Vũ Võ Tuấn Kiệt", MaSoSinhVien = "DH52400007", DiemSinhVien = 6.7f},
-                new SinhVien {TenSinhVien = "Đặng Phương Thảo", MaSoSinhVien = "DH52400008", DiemSinhVien = 3.5f},
-                new SinhVien {TenSinhVien = "Bùi Đức Anh", MaSoSinhVien = "DH52400009", DiemSinhVien = 3.0f},
-                new SinhVien {TenSinhVien = "Đỗ Khánh Linh", MaSoSinhVien = "DH52400010", DiemSinhVien = 5.8f},
-                new SinhVien {TenSinhVien = "Ngô Quốc Huy", MaSoSinhVien = "DH52400011", DiemSinhVien = 7.6f},
-                new SinhVien {TenSinhVien = "Hồ Thùy Dương", MaSoSinhVien = "DH52400012", DiemSinhVien = 9.9f},
-                new SinhVien {TenSinhVien = "Lý Hoàng Long", MaSoSinhVien = "DH52400013", DiemSinhVien = 7.8f},
-                new SinhVien {TenSinhVien = "Phan Mai Phương", MaSoSinhVien = "DH52400014", DiemSinhVien = 1.5f},
-                new SinhVien {TenSinhVien = "Võ Đình Khang", MaSoSinhVien = "DH52400015", DiemSinhVien = 6.4f}
-            };
-            string dulieujson = JsonSerializer.Serialize(
-                this.danhsachsinhvien,
-                new JsonSerializerOptions { 
-                    WriteIndented = true,
+        try {
+            if(!Directory.Exists("data")){
+                Console.WriteLine("Chưa có thư mục data. Tạo thư mục data/");
+                Directory.CreateDirectory("data");
+            }
+            // demo database 
+            if(File.Exists(this.duongdandanhsach)){
+                string[] dulieudanhsach = File.ReadAllLines(this.duongdandanhsach);
+                this.danhsachsinhvien = new List<SinhVien>();
+                foreach(string dong in dulieudanhsach){
+                    string[] dulieu = dong.Split(';');
+                    this.danhsachsinhvien.Add(
+                        new SinhVien {
+                            TenSinhVien = dulieu[0],
+                            MaSoSinhVien = dulieu[1],
+                            DiemSinhVien = float.Parse(dulieu[2])
+                        }
+                    );
                 }
-            );
-            File.WriteAllText(this.duongdandanhsach, dulieujson);
+            } 
+            else {
+                this.danhsachsinhvien = new List<SinhVien> {
+                    new SinhVien {TenSinhVien = "Nguyễn Trường Chinh", MaSoSinhVien = "DH52400001", DiemSinhVien = 7.6f},
+                    new SinhVien {TenSinhVien = "Trần Minh Gia Bảo", MaSoSinhVien = "DH52400002", DiemSinhVien = 7.6f},
+                    new SinhVien {TenSinhVien = "Trần Minh Anh", MaSoSinhVien = "DH52400003", DiemSinhVien = 7.1f},
+                    new SinhVien {TenSinhVien = "Lê Hoàng Nam", MaSoSinhVien = "DH52400004", DiemSinhVien = 8.3f},
+                    new SinhVien {TenSinhVien = "Phạm Thanh Tùng", MaSoSinhVien = "DH52400005", DiemSinhVien = 9.1f},
+                    new SinhVien {TenSinhVien = "Hoàng Ngọc Hân", MaSoSinhVien = "DH52400006", DiemSinhVien = 6.2f},
+                    new SinhVien {TenSinhVien = "Vũ Võ Tuấn Kiệt", MaSoSinhVien = "DH52400007", DiemSinhVien = 6.7f},
+                    new SinhVien {TenSinhVien = "Đặng Phương Thảo", MaSoSinhVien = "DH52400008", DiemSinhVien = 3.5f},
+                    new SinhVien {TenSinhVien = "Bùi Đức Anh", MaSoSinhVien = "DH52400009", DiemSinhVien = 3.0f},
+                    new SinhVien {TenSinhVien = "Đỗ Khánh Linh", MaSoSinhVien = "DH52400010", DiemSinhVien = 5.8f},
+                    new SinhVien {TenSinhVien = "Ngô Quốc Huy", MaSoSinhVien = "DH52400011", DiemSinhVien = 7.6f},
+                    new SinhVien {TenSinhVien = "Hồ Thùy Dương", MaSoSinhVien = "DH52400012", DiemSinhVien = 9.9f},
+                    new SinhVien {TenSinhVien = "Lý Hoàng Long", MaSoSinhVien = "DH52400013", DiemSinhVien = 7.8f},
+                    new SinhVien {TenSinhVien = "Phan Mai Phương", MaSoSinhVien = "DH52400014", DiemSinhVien = 1.5f},
+                    new SinhVien {TenSinhVien = "Võ Đình Khang", MaSoSinhVien = "DH52400015", DiemSinhVien = 6.4f}
+                };
+                List<string> dulieu = new List<string>();
+                foreach(SinhVien sinhvien in this.danhsachsinhvien){
+                    dulieu.Add(
+                        $"{sinhvien.TenSinhVien};{sinhvien.MaSoSinhVien};{sinhvien.DiemSinhVien}"
+                    );
+                }
+                File.WriteAllLines(this.duongdandanhsach, dulieu);
+            }
+        } 
+        catch(Exception ex){
+            Console.WriteLine("Lỗi: {0}", ex.Message);
         }
-        this.SoLuongSinhVien = this.danhsachsinhvien.Count;
+        finally {
+            this.SoLuongSinhVien = this.danhsachsinhvien.Count;
+        } 
     }
 
     private void luudulieudanhsach(){
-        string dulieujson = JsonSerializer.Serialize(
-            danhsachsinhvien, 
-            new JsonSerializerOptions {
-                WriteIndented = true,
+        try {
+            List<string> dulieu = new List<string>();
+            foreach(SinhVien sinhvien in danhsachsinhvien){
+                dulieu.Add($"{sinhvien.TenSinhVien};{sinhvien.MaSoSinhVien};{sinhvien.DiemSinhVien}");
             }
-        );
-        File.WriteAllText(duongdandanhsach, dulieujson, Encoding.UTF8);
+            File.WriteAllLines(duongdandanhsach, dulieu);
+            Console.WriteLine("Đã sao lưu dữ liệu vào file !");
+            return;
+        } 
+        catch(Exception ex){
+            Console.WriteLine("Lỗi: {0}", ex.Message);
+        }
+        Console.WriteLine("Đã xảy ra lỗi ! Không thể sao lưu dữ liệu vào file");
     }
 
     // nhập số thứ tự (phục vụ cho các hàm sửa, xóa)

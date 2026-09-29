@@ -1,0 +1,16 @@
+Nguyễn Trường Chinh;DH52400001;7,6
+Trần Minh Gia Bảo;DH52400002;7,6
+Trần Minh Anh;DH52400003;7,1
+Lê Hoàng Nam;DH52400004;8,3
+Phạm Thanh Tùng;DH52400005;9,1
+Hoàng Ngọc Hân;DH52400006;6,2
+Vũ Võ Tuấn Kiệt;DH52400007;6,7
+Đặng Phương Thảo;DH52400008;3,5
+Bùi Đức Anh;DH52400009;3
+Đỗ Khánh Linh;DH52400010;5,8
+Ngô Quốc Huy;DH52400011;7,6
+Hồ Thùy Dương;DH52400012;9,9
+Lý Hoàng Long;DH52400013;7,8
+Phan Mai Phương;DH52400014;1,5
+Võ Đình Khang;DH52400015;6,4
+Lâm Hùng;DH52400016;7,2

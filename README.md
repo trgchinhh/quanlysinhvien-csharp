@@ -1,6 +1,6 @@
 # Chương trình quản lý sinh viên 
 
-Chương trình quản lý sinh viên CLI bằng ngôn ngữ C#, với các chức năng cơ bản như xem danh sách, xóa, sửa thông tin, sắp xếp, thống kê. Bên cạnh còn có lưu thông tin sinh viên vào file json và lưu lại dữ liệu sau mỗi thao tác kèm menu TUI. Mục đích làm quen với cú pháp và lập trình hướng đối tượng bằng ngôn ngữ này.
+Chương trình quản lý sinh viên CLI bằng ngôn ngữ C#, với các chức năng cơ bản như xem danh sách, xóa, sửa thông tin, sắp xếp, thống kê. Bên cạnh còn có lưu thông tin sinh viên vào file text và lưu lại dữ liệu sau mỗi thao tác kèm menu TUI. Mục đích làm quen với cú pháp và lập trình hướng đối tượng bằng ngôn ngữ này.
 
 ![demo ảnh](img/demo.png)
 
